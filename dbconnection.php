@@ -1,32 +1,9 @@
 <?php
 	$page_tittle = 'MySQL Laboratory';
 	include('includes/header.html');
-?>
-<?php
-if(!empty($_REQUEST['host'])){
-	$host = $_REQUEST['host'];
-}else {
-	$host = NULL;
-}
+	include('includes/configuration.php');
 
-echo "$host <br>";
 
-if(!empty($_REQUEST['database'])) {
-	$database = $_REQUEST['database'];
-}else {
-	$database = NULL;
-}
-
-if(!empty($_REQUEST['password'])) {
-	$password = $_REQUEST['password'];
-}else {
-	$password = NULL;
-}
-if(!empty($_REQUEST['userdb'])) {
-	$user = $_REQUEST['userdb'];
-}else {
-	$user = NULL;
-}
 /*?>
 
 <?php
@@ -35,9 +12,9 @@ if(!empty($_REQUEST['userdb'])) {
  *Desc:     PHP program that sends an SQL query to the
  *          MySQL server and displays the results.
  */
-echo "<html>
-      <head><title>SQL Query Sender</title></head>
-      <body>";
+//echo "<html>
+//      <head><title>SQL Query Sender</title></head>
+//      <body>";
 if(ini_get("magic_quotes_gpc") == "1")
 {
    $_POST['query'] = stripslashes($_POST['query']);
@@ -114,28 +91,8 @@ else
 {
    $query = str_replace("%&%","'",$_POST['query']);
 }
-?>
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" 
-      method="POST">
-<table>
- <tr><td style='text-align: right; font-weight: bold'>
-         Type in database name</td> 
-     <td><input type="text" name="database"
-            value=<?php echo @$_POST['database'] ?> ></td>
- </tr>
- <tr><td style='text-align: right; font-weight: bold' 
-         valign="top">Type in SQL query</td>
-     <td><textarea name="query" cols="60"
-            rows="10"><?php echo $query ?></textarea></td>
- </tr>
- <tr><td colspan="2" style='text-align: center'>
-        <input type="submit" value="Submit Query"></td>
- </tr>
-</table>
-<input type="hidden" name="form" value="yes">
-</form>
-</body></html>
-
-<?php
+	include('includes/formquery.html');
 	include('includes/footer.html');
+	
 ?>
+
