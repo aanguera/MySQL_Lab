@@ -1,0 +1,15 @@
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" 
+      method="POST">
+<table>
+ <tr><td style='text-align: right; font-weight: bold' 
+         valign="top">Type in SQL query</td>
+     <td><textarea name="query" cols="60"
+            rows="10"><?php echo $query ?></textarea></td>
+ </tr>
+ <tr><td colspan="2" style='text-align: center'>
+        <input type="submit" value="Submit Query"></td>
+ </tr>
+</table>
+<input type="hidden" name="form" value="yes">
+</form>
+</body></html>
